@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Introdução ao JavaScript</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="lib/testefw.css">
+        <link rel="stylesheet" href="ado2.css">
+        <script src="lib/utils.js" defer></script>
+        <script src="lib/testefw.js" defer></script>
+        <script src="ado2-teste.js" defer></script>
+        <script src="ado2.js" defer></script>
+        <script>
+            "use strict";
+
+            function limparForm11a13() {
+                const raiz = ''
+                    + '<li>'
+                    + '    <div>'
+                    + '        <label for="nota-1">Nota:</label>'
+                    + '        <input type="text" id="nota-1">'
+                    + '    </div>'
+                    + '    <div>'
+                    + '        <label for="peso-1">Peso:</label>'
+                    + '        <input type="text" id="peso-1">'
+                    + '    </div>'
+                    + '</li>';
+                document.querySelectorAll(".ex11a13 input[type='text']").forEach(e => e.value = "");
+                document.querySelectorAll(".ex11a13 input[type='radio']").forEach(e => e.checked = "");
+                document.querySelector(".ex11a13 ul").innerHTML = raiz;
+            }
+        </script>
+    </head>
+    <body>
+        <h1 class="testefw-titulo">ADO 2</h1>
+        <address class="testefw-versao">Versão 1º semestre 2023</address>
+        <div id="testefw-form-executar"></div>
+
+        <div class="formzinho ex11a13">
+            <h1>Formulário para os exercícios 11 a 13</h1>
+            <p>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" class="grande">
+            </p>
+            <p class="ex11a13-radio">
+                <label for="ele">Ele</label>
+                <input type="radio" id="ele" value="M" class="genero" name="genero">
+            </p>
+            <p class="ex11a13-radio">
+                <label for="ela">Ela</label>
+                <input type="radio" id="ela" value="F" class="genero" name="genero">
+            </p>
+            <p>
+                <label for="disciplina">Disciplina:</label>
+                <input type="text" id="disciplina" class="grande">
+            </p>
+            <p>
+                <label for="presenca">Presença:</label>
+                <input type="text" id="presenca">
+            </p>
+            <ul>
+                <li>
+                    <div>
+                        <label for="nota-1">Nota:</label>
+                        <input type="text" id="nota-1">
+                    </div>
+                    <div>
+                        <label for="peso-1">Peso:</label>
+                        <input type="text" id="peso-1">
+                    </div>
+                </li>
+            </ul>
+            <div>
+                <p class="ex11a13-botao">
+                    <label for="botao-mais-nota">&nbsp;</label>
+                    <button type="button" id="botao-mais-nota" onclick="criarItemNota();">Adicionar nota</button>
+                </p>
+                <p class="ex11a13-botao">
+                    <label for="botao-menos-nota">&nbsp;</label>
+                    <button type="button" id="botao-menos-nota" onclick="removerItemNota();">Remover nota</button>
+                </p>
+                <p class="ex11a13-botao">
+                    <label for="botao-cadastrar">&nbsp;</label>
+                    <button type="button" id="botao-cadastrar" onclick="verificarAlunoMatriculado();">Verificar</button>
+                </p>
+                <p class="ex11a13-botao">
+                    <label for="botao-limpar">&nbsp;</label>
+                    <button type="button" id="botao-limpar" onclick="limparForm11a13();">Limpar campos</button>
+                </p>
+            </div>
+            <p>
+                <label for="presenca">Situação:</label>
+                <input type="text" id="situacao" readonly>
+            </p>
+        </div>
+    </body>
+</html>

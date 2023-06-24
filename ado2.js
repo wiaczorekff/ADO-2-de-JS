@@ -12,7 +12,8 @@ function nomesDosAlunos() {
 /**
  * Esta classe representa a nota de um aluno em alguma ADO junto com o peso dessa ADO na composição da nota.
  */
-class Nota {
+class Nota 
+{
     #valor;
     #peso;
 
@@ -21,11 +22,27 @@ class Nota {
      * @param {number} valor O valor entre 0 a 10 da nota.
      * @param {number} peso O peso da nota, entre 0 a 10, na composição total da nota semestral.
      */
-    constructor(valor, peso) {
+    constructor(valor, peso) 
+    {
         this.#verificar(valor, peso);
         this.#peso = peso;
         this.#valor = valor;
     }
+    get valor() 
+    {
+      return this.#valor;
+    }
+  
+    get peso() 
+    {
+      return this.#peso;
+    }
+    
+    get notaPonderada() 
+    {
+      return this.#valor * this.#peso;
+    }
+}
 
     // EXERCÍCIO 1.
     /**
@@ -47,12 +64,12 @@ class Nota {
      * @param {number} valor O valor entre 0 a 10 da nota.
      * @param {number} peso O peso da nota, entre 0 a 10, na composição total da nota semestral.
      */
-    #verificar(valor, peso) {
+    #verificar(valor, peso) 
+    {
       // Verifica se o valor e o peso são numéricos e não são infinitos
-      if (
-        typeof valor !== 'number' || !isFinite(valor) ||
-        typeof peso !== 'number' || !isFinite(peso)
-      ) {
+      if (typeof valor !== 'number' || !isFinite(valor) ||
+          typeof peso !== 'number' || !isFinite(peso)) 
+      { 
         throw new TypeError('A nota e o peso devem ser numéricos.');
       }
     
@@ -66,35 +83,20 @@ class Nota {
 
     // EXERCÍCIO 2.
     // Crie os métodos getters necessários de todos os parâmetros recebidos no construtor aqui.
-    class Nota {
-      #valor;
-      #peso;
     
-      constructor(valor, peso) {
-        this.#verificar(valor, peso);
-        this.#peso = peso;
-        this.#valor = valor;
-      }
-    
-      get valor() {
-        return this.#valor;
-      }
-    
-      get peso() {
-        return this.#peso;
-      }
-    
-      #verificar(valor, peso) {
-        if (typeof valor !== "number" || typeof peso !== "number") {
+      #verificar(valor, peso) 
+      {
+        if (typeof valor !== "number" || typeof peso !== "number") 
+        {
           throw new TypeError("A nota e o peso devem ser numéricos.");
         }
     
-        if (valor < 0 || valor > 10 || peso < 0 || peso > 10) {
+        if (valor < 0 || valor > 10 || peso < 0 || peso > 10) 
+        {
           throw new RangeError("A nota e o peso devem ser um número entre 0 e 10.");
         }
       }
-    }
-    const n = new Nota(8, 4);
+    n = new Nota(8, 4);
     console.log(n.valor); 
     console.log(n.peso); 
 
@@ -105,40 +107,21 @@ class Nota {
      * Retorna o valor ponderado desta nota. Ou seja, a nota numa escala de 0 a peso.
      * @returns {number} O valor ponderado desta nota.
      */
-    class Nota {
-      #valor;
-      #peso;
     
-      constructor(valor, peso) {
-        this.#verificar(valor, peso);
-        this.#peso = peso;
-        this.#valor = valor;
-      }
-    
-      get valor() {
-        return this.#valor;
-      }
-    
-      get peso() {
-        return this.#peso;
-      }
-    
-      get notaPonderada() {
-        return this.#valor * this.#peso;
-      }
-    
-      #verificar(valor, peso) {
-        if (typeof valor !== "number" || typeof peso !== "number") {
+      #verificar(valor, peso) 
+      {
+        if (typeof valor !== "number" || typeof peso !== "number") 
+        {
           throw new TypeError("A nota e o peso devem ser numéricos.");
         }
     
-        if (valor < 0 || valor > 10 || peso < 0 || peso > 10) {
+        if (valor < 0 || valor > 10 || peso < 0 || peso > 10) 
+        {
           throw new RangeError("A nota e o peso devem ser um número entre 0 e 10.");
         }
       }
-    }
 
-    const n = new Nota(8, 4);
+    n = new Nota(8, 4);
     console.log(n.notaPonderada); 
     
 
@@ -149,33 +132,14 @@ class Nota {
      * Obviamente, os números vão variar de acordo com os valores de nota e peso.
      * @returns {String} A representação string deste objeto.
      */
-    class Nota {
-      #valor;
-      #peso;
     
-      constructor(valor, peso) {
-        this.#verificar(valor, peso);
-        this.#peso = peso;
-        this.#valor = valor;
-      }
-    
-      get valor() {
-        return this.#valor;
-      }
-    
-      get peso() {
-        return this.#peso;
-      }
-    
-      get notaPonderada() {
-        return this.#valor * this.#peso;
-      }
-    
-      toString() {
+      toString() 
+      {
         return `nota = ${this.#valor}, peso = ${this.#peso}`;
       }
     
-      #verificar(valor, peso) {
+      #verificar(valor, peso) 
+      {
         if (typeof valor !== "number" || typeof peso !== "number") {
           throw new TypeError("A nota e o peso devem ser numéricos.");
         }
@@ -184,7 +148,6 @@ class Nota {
           throw new RangeError("A nota e o peso devem ser um número entre 0 e 10.");
         }
       }
-    }
     const n = new Nota(6, 4);
     console.log(n.toString()); 
     
@@ -198,43 +161,9 @@ class Nota {
  *
  * A presença é um inteiro entre 0 e 100 representando a porcentagem de comparecimento às aulas.
  */
-class AlunoMatricula {
-
-    // EXERCÍCIO 5.
-    /**
-     * Considerando a descrição da classe como dada acima, implemente o construtor dela.
-     * Basta salvar todos os valores recebidos dentro do "this". O nome dos campos
-     * deve ser igual ao nome dos parâmetros com um "#" antes. Declare os campos antes do construtor
-     * com #campo1; #campo2; #campo3; ...
-     *
-     * Observação: Valide o tipo dos parâmetros. Os testes mais chatos chamam esta função com o tipo errado só pra ter
-     * certeza de que vocês não deixam que instâncias desta classe sejam criados com porcaria. Lance TypeError se algum
-     * dos parâmetros for do tipo errado. Coloque a mensagem que você preferir na exceção, pois ela poderá aparecer na
-     * tela no exercício 11. Use a mensagem que preferir, pois o teste só valida se há alguma mensagem que não esteja
-     * em branco, mas não verifica qual é essa mensagem exatamente.
-     *
-     * Para o parâmetro "ados", use o operador "instanceof" para testá-lo se é um array. Lembre-se de testar se todos
-     * os seus elementos são instâncias da classe "Nota" dos exercícios 1 a 3. Para o resto, você pode usar o operador
-     * typeof ou a função determinarTipo2.
-     *
-     * Se todos os parâmetros forem dos tipos certos, verifique ainda se os seus valores são aceitáveis:
-     * - Se o peso das notas recebidas não somar 10, lance RangeError.
-     * - Se a presença não estiver entre 0 e 100, lance RangeError.
-     * - Se o gênero não for "M" ou "F", lance RangeError.
-     * - Se o nome do(a) aluno(a) ou da disciplina for uma string em branco, lance RangeError.
-     * Novamente, a exceção lançada pode ter qualquer mensagem de sua preferência, desde que haja alguma mensagem e ela
-     * não esteja em branco.
-     *
-     * @param {String} nome O nome do(a) aluno(a). Nunca deve ser uma string em branco.
-     * @param {String} genero "M" se for um aluno ou "F" se for uma aluna.
-     * @param {String} disciplina O nome da disciplina. Nunca deve ser uma string em branco.
-     * @param {Array<Nota>} ados Os ADOs feitos pelo(a) aluno(a).
-     * @param {number} presenca A quantidade de presença que o(a) aluno(a) teve na aula.
-     * @throw TypeError Se qualquer parâmetro for do tipo errado.
-     * @throw RangeError Se o valor de qualquer parâmetro não for aceitável.
-     */
-    class AlunoMatricula {
-      #nome;
+class AlunoMatricula 
+{
+  #nome;
       #genero;
       #disciplina;
       #ados;
@@ -271,7 +200,43 @@ class AlunoMatricula {
         this.#ados = ados;
         this.#presenca = presenca;
       }
-    }
+}
+
+    // EXERCÍCIO 5.
+    /**
+     * Considerando a descrição da classe como dada acima, implemente o construtor dela.
+     * Basta salvar todos os valores recebidos dentro do "this". O nome dos campos
+     * deve ser igual ao nome dos parâmetros com um "#" antes. Declare os campos antes do construtor
+     * com #campo1; #campo2; #campo3; ...
+     *
+     * Observação: Valide o tipo dos parâmetros. Os testes mais chatos chamam esta função com o tipo errado só pra ter
+     * certeza de que vocês não deixam que instâncias desta classe sejam criados com porcaria. Lance TypeError se algum
+     * dos parâmetros for do tipo errado. Coloque a mensagem que você preferir na exceção, pois ela poderá aparecer na
+     * tela no exercício 11. Use a mensagem que preferir, pois o teste só valida se há alguma mensagem que não esteja
+     * em branco, mas não verifica qual é essa mensagem exatamente.
+     *
+     * Para o parâmetro "ados", use o operador "instanceof" para testá-lo se é um array. Lembre-se de testar se todos
+     * os seus elementos são instâncias da classe "Nota" dos exercícios 1 a 3. Para o resto, você pode usar o operador
+     * typeof ou a função determinarTipo2.
+     *
+     * Se todos os parâmetros forem dos tipos certos, verifique ainda se os seus valores são aceitáveis:
+     * - Se o peso das notas recebidas não somar 10, lance RangeError.
+     * - Se a presença não estiver entre 0 e 100, lance RangeError.
+     * - Se o gênero não for "M" ou "F", lance RangeError.
+     * - Se o nome do(a) aluno(a) ou da disciplina for uma string em branco, lance RangeError.
+     * Novamente, a exceção lançada pode ter qualquer mensagem de sua preferência, desde que haja alguma mensagem e ela
+     * não esteja em branco.
+     *
+     * @param {String} nome O nome do(a) aluno(a). Nunca deve ser uma string em branco.
+     * @param {String} genero "M" se for um aluno ou "F" se for uma aluna.
+     * @param {String} disciplina O nome da disciplina. Nunca deve ser uma string em branco.
+     * @param {Array<Nota>} ados Os ADOs feitos pelo(a) aluno(a).
+     * @param {number} presenca A quantidade de presença que o(a) aluno(a) teve na aula.
+     * @throw TypeError Se qualquer parâmetro for do tipo errado.
+     * @throw RangeError Se o valor de qualquer parâmetro não for aceitável.
+     */
+    class AlunoMatricula {
+      
     
     // EXERCÍCIO 6.
     // Crie os métodos getters necessários de todos os parâmetros recebidos no construtor aqui.
@@ -427,7 +392,8 @@ get status() {
  * Coloque esse <li> dentro do <ul> que está dentro da <div> com a classe ex11e13 no ado2.html.
  */
 
-function criarItemNota() {
+function criarItemNota() 
+{
   const ul = document.querySelector('.ex11e13 ul');
   const li = document.createElement('li');
 
@@ -474,11 +440,13 @@ function generateUniqueId() {
  * No formulário, ao clicar no botão "Remover nota", o último <li> criado no exercício 11 deve ser removido.
  * Se não houver mais nenhum <li> a ser removido, nada deve ser feito.
  */
-function removerItemNota() {
+function removerItemNota() 
+{
   const ul = document.querySelector('.ex11e13 ul');
   const liList = ul.querySelectorAll('li');
 
-  if (liList.length > 0) {
+  if (liList.length > 0) 
+  {
     const lastLi = liList[liList.length - 1];
     ul.removeChild(lastLi);
   }
@@ -561,29 +529,36 @@ function verificarAlunoMatriculado() {
 // * circunferencia
 // Se o raio recebido no construtor não for um número, lance um TypeError. Se for negativo, lance RangeError.
 class Circulo {
-  constructor(raio) {
-    if (typeof raio !== "number") {
+  constructor(raio) 
+  {
+    if (typeof raio !== "number") 
+    {
       throw new TypeError("O raio deve ser um número.");
     }
-    if (raio < 0) {
+    if (raio < 0) 
+    {
       throw new RangeError("O raio não pode ser negativo.");
     }
     this._raio = raio;
   }
 
-  get raio() {
+  get raio() 
+  {
     return this._raio;
   }
 
-  get diametro() {
+  get diametro() 
+  {
     return this._raio * 2;
   }
 
-  get area() {
+  get area() 
+  {
     return Math.PI * this._raio ** 2;
   }
 
-  get circunferencia() {
+  get circunferencia() 
+  {
     return 2 * Math.PI * this._raio;
   }
 }
